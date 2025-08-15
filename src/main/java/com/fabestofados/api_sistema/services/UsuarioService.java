@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fabestofados.api_sistema.dtos.UsuarioDTO;
 import com.fabestofados.api_sistema.entities.Usuario;
+import com.fabestofados.api_sistema.exceptions.ResourceNotFoundException;
 import com.fabestofados.api_sistema.repositories.UsuarioRepository;
 
 @Service
@@ -32,7 +33,7 @@ public class UsuarioService {
 	@Transactional(readOnly = true)
 	public UsuarioDTO findById(Long id) {
 		Usuario usuario = repository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Usuário não encontrado com ID" + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado com ID" + id));
 		return toDTO(usuario);
 	}
 	
@@ -50,7 +51,7 @@ public class UsuarioService {
 	@Transactional
 	public UsuarioDTO update(Long id, UsuarioDTO dto) {
 		Usuario usuario = repository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Usuário não encontrado com ID" + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado com ID" + id));
 		usuario.setNome(dto.nome());
 		usuario.setEmail(dto.email());
 		Usuario updated = repository.save(usuario);
@@ -61,7 +62,7 @@ public class UsuarioService {
 	
 	public void delete(Long id) {
 		if(!repository.existsById(id)) {
-			throw new RuntimeException("Usuário não encotrado com ID:" + id);
+			throw new ResourceNotFoundException("Usuário não encotrado com ID:" + id);
 		}
 		repository.deleteById(id);
 	}

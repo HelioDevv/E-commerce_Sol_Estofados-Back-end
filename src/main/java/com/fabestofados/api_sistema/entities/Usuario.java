@@ -34,50 +34,25 @@ public class Usuario implements Serializable{
 		this.email = email;
 	}
 
-	public Long getUsuario_id() {
-		return usuario_id;
-	}
+	public Long getUsuario_id() {return usuario_id;}
+	public void setUsuario_id(Long usuario_id) {this.usuario_id = usuario_id;}
 
-	public void setUsuario_id(Long usuario_id) {
-		this.usuario_id = usuario_id;
-	}
+	public String getNome() {return nome;}
+	public void setNome(String nome) {this.nome = nome;}
 
-	public String getNome() {
-		return nome;
-	}
+	public String getEmail() {return email;}
+	public void setEmail(String email) {this.email = email;}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	public static long getSerialversionuid() {return serialVersionUID;}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(usuario_id);
-	}
+	public int hashCode() {return Objects.hash(usuario_id);}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
+		if (this == obj)return true;
+		if (obj == null)return false;
+		if (getClass() != obj.getClass())return false;Usuario other = (Usuario) obj;
 		return Objects.equals(usuario_id, other.usuario_id);
 	}
-	
-	
 }
