@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fabestofados.api_sistema.dtos.UsuarioDTO;
-import com.fabestofados.api_sistema.entities.Usuario;
 import com.fabestofados.api_sistema.services.UsuarioService;
 
 import jakarta.validation.Valid;
