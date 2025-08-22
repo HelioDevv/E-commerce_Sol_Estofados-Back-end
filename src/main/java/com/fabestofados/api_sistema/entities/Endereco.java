@@ -42,14 +42,14 @@ public class Endereco implements Serializable{
 	
 	//Relacionamento *:1
 	@ManyToOne
-	@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id", nullable = false)
-	private Usuario usuario;
+	@JoinColumn(name = "cliente_id", nullable = false)
+	private Cliente cliente;
 	
 	public Endereco() {}
 
 	public Endereco(
 			Long endereco_id, String rua, String bairro, String cidade, String estado, String pais, String tipo,
-			Usuario usuario) {
+			Cliente cliente) {
 		super();
 		this.endereco_id = endereco_id;
 		this.rua = rua;
@@ -58,7 +58,7 @@ public class Endereco implements Serializable{
 		this.estado = estado;
 		this.pais = pais;
 		this.tipo = tipo;
-		this.usuario = usuario;
+		this.cliente = cliente;
 	}
 
 	public Long getEndereco_id() {return endereco_id;}
@@ -88,8 +88,8 @@ public class Endereco implements Serializable{
 	public void setTipo(String tipo) {this.tipo = tipo;}
 
 	
-	public Usuario getUsuario() {return usuario;}
-	public void setUsuario(Usuario usuario) {this.usuario = usuario;}
+	public Cliente getCliente() {return cliente;}
+	public void setCliente(Cliente cliente) {this.cliente = cliente;}
 
 	
 	public static long getSerialversionuid() {return serialVersionUID;}

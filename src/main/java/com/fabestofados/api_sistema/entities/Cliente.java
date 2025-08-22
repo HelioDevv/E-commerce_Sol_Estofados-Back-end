@@ -1,14 +1,18 @@
 package com.fabestofados.api_sistema.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,9 +28,13 @@ public class Cliente implements Serializable{
 	
 	private String telefone;
 	
+	// Relacionamento: 1 Usuario -> N Enderecos
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Endereco> enderecos = new ArrayList<>();
+	
 	//Relacionamento 1:1 com Usuario
-	@OneToOne
-	@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", nullable = false)
 	private Usuario usuario;
 	
 	public Cliente() {}
