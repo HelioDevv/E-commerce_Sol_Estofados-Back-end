@@ -1,5 +1,7 @@
 package com.fabestofados.api_sistema.dtos;
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -10,4 +12,5 @@ public record ClienteDTO(
 		@Size(max = 20)
 		String telefone,
 		
-		Long usuario_id) {}
+		Long usuario_id,
+		List<EnderecoDTO> enderecos) {}

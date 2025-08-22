@@ -56,8 +56,10 @@ public class Cliente implements Serializable{
 	
 	public Usuario getUsuario() {return usuario;}
 	public void setUsuario(Usuario usuario) {this.usuario = usuario;}
-
 	
+	
+	public List<Endereco> getEnderecos() {return enderecos;}
+
 	public static long getSerialversionuid() {return serialVersionUID;}
 
 	@Override
