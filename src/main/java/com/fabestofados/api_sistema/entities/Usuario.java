@@ -1,13 +1,17 @@
 package com.fabestofados.api_sistema.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +29,10 @@ public class Usuario implements Serializable{
 	@Column(unique = true, nullable = false)
 	private String email;
 	
+	// Relacionamento: 1 Usuario -> N Enderecos
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Endereco> enderecos = new ArrayList<>();
+	
 	public Usuario() {}
 
 	public Usuario(Long usuario_id, String nome, String email) {
@@ -37,12 +45,18 @@ public class Usuario implements Serializable{
 	public Long getUsuario_id() {return usuario_id;}
 	public void setUsuario_id(Long usuario_id) {this.usuario_id = usuario_id;}
 
+	
 	public String getNome() {return nome;}
 	public void setNome(String nome) {this.nome = nome;}
 
+	
 	public String getEmail() {return email;}
 	public void setEmail(String email) {this.email = email;}
+	
+	
+	public List<Endereco> getEnderecos() {return enderecos;}
 
+	
 	public static long getSerialversionuid() {return serialVersionUID;}
 
 	@Override
