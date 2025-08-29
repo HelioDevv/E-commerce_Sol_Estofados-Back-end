@@ -28,7 +28,7 @@ public class Cliente implements Serializable{
 	
 	private String telefone;
 	
-	// Relacionamento: 1 Usuario -> N Enderecos
+	// Relacionamento: 1 Cliente -> N Enderecos
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Endereco> enderecos = new ArrayList<>();
 	
